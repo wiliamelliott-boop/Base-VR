@@ -8,10 +8,22 @@
     <title>William's VR</title>
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+    <script src="main.js"></script>
 </head>
 <body>
     <a-scene>
         <a-assets>
+            <!-- Video -->
+
+  <video id="videoclip" loop="true" src="tvAssets/taxi.mp4" crossorigin="anonymous" preload="auto"></video>
+
+  <!-- Buttons and Background -->
+
+  <img id="play" src="tvAssets/btnPlay.png" preload="auto">
+
+  <img id="pause" src="tvAssets/btnPause.png" preload="auto">
+
+  <img id="tv_background" src="tvAssets/tv_background.jpg" preload="auto">
             <img id="art1" src="images/vlad.jpg" title="Image by annonymous on https://en.wikipedia.org/wiki/Vlad_the_Impaler#/media/File:Vlad_%C5%A2epe%C5%9F,_the_Impaler,_Prince_of_Wallachia_(1456-1462)_(died_1477).jpg" preload="auto">
             <img id="art2" src="images/gustavus.jpg" title="Image by Jacob Hoefnagel on https://en.wikipedia.org/wiki/Gustavus_Adolphus#/media/File:Attributed_to_Jacob_Hoefnagel_-_Gustavus_Adolphus,_King_of_Sweden_1611-1632_-_Google_Art_Project.jpg" preload="auto">
             <img id="art3" src="images/scotland.png" title="Image by unknown on https://en.wikipedia.org/wiki/Flag_of_Scotland#/media/File:Flag_of_Scotland.svg" preload="auto">
@@ -32,7 +44,7 @@
       <!--Art stARTs here-->
       <a-plane id="art1" src="#art1" scale="2 2.5 0.05" rotation="0 0 0" position="-2.5 1.634 -4.792"></a-plane>
       <a-plane id="art2" src="#art2" scale="2 2.5 0.05" rotation="0 0 0" position="2.5 1.634 -4.792"></a-plane>
-      <a-plane id="art3" src="#art3" scale="3 2 0.05" rotation="0 90 0" position="-4.91 1.634 0"></a-plane>
+      <a-plane id="art3" src="#art3" scale="3 2 0.05" rotation="0 90 0" position="-4.91 1.634 3"></a-plane>
       <a-plane id="art4" src="#art4" scale="2 2 0.05" rotation="0 -90 0" position="4.91 1.634 0"></a-plane>
       <a-plane id="art5" src="#art5" scale="3 3.3 0.05" rotation="180 0 180" position="0 1.634 4.792"></a-plane>
       <a-plane id="art6" src="#art5" scale="3 3.3 0.05" rotation="0 0 0" position="0 1.634 5.2"></a-plane>
@@ -43,6 +55,30 @@
         <a-entity position="0 0 0" scale="2.5 2.5 2.5"  shader="flat" text="value: khufu's pyramid is outside; align: center; color: #ffffff; font: roboto;"></a-entity>
         
         </a-plane>
+        <!-- TV is here-->
+        <a-entity>
+
+            <a-video src="#videoclip" position="-3.893 1.6 0" rotation="0 90 0" width="2" height="1.125"></a-video>
+          
+            <!-- TV background -->
+          
+            <a-plane id="videoControls" position="-3.893 0.854 0" scale="2 0.386 1.714" rotation="0 90 0" opacity="1" src="#tv_background">
+          
+              <!-- Play button -->
+          
+              <a-plane id="vidplaybox" src="#play" scale="0.122 0.678 0.122" position="-0.350 0 .01" shader="flat" transparent="true" videoplayer></a-plane>
+          
+              <!-- Stop button -->
+          
+              <a-plane id="vidpausebox" src="#pause" scale="0.122 0.678 0.122" position="0.350 0 .01" shader="flat" transparent="true" videopauser></a-plane>
+          
+            </a-plane>
+          
+          </a-entity>
+          
+          <!-- Allows clicking with the mouse -->
+          
+          <a-entity cursor="rayOrigin: mouse"></a-entity>
     </a-scene>
 </body>
 </html>
